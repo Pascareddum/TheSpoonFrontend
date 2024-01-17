@@ -13,9 +13,15 @@ import DashBoard from "./Pages/DashBoard";
 import Ordini from "./Pages/Ordini";
 import About from "./Pages/About";
 import Ristoranti from "./Pages/Ristoranti";
-import { useState } from "react";
 
 function App () {
+  const token=sessionStorage.getItem('token');
+
+  function Logout(){
+    sessionStorage.removeItem('token');
+    window.location.reload('/');
+  }
+
   return(
     <>
       <div class={styles.topnav}>
@@ -27,8 +33,9 @@ function App () {
     <a href="/about">About</a>
     <a href="/ristoranti">Ristoranti</a>
         
-  
-        <a href="/login"><img style="width: 25px;height: 25px;" alt="logo"  src={UserIcon}/> </a>
+        {token===null ? (
+        <a href="/login"><img style="width: 25px;height: 25px;" alt="logo"  src={UserIcon}/> </a>):null}
+        {token!==null?(<a href="/dashBoard">Dashboard</a>):null}
     </div>
     </div>    
     

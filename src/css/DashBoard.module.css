@@ -2,6 +2,7 @@
     background: white;
     border:2.5px solid #333333;
     height: 250px;
+    width: 100%;
     text-align: center;
     margin-top:100px;
 }
@@ -9,8 +10,7 @@
 
 .options{
     margin:auto;
-    display: flex;
-    width: max-content;
+    width: 100%;
 
 }
 

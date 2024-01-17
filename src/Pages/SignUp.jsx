@@ -1,87 +1,100 @@
-import { createSignal,createEffect } from "solid-js";
+import { createSignal} from "solid-js";
 import axios from 'axios';
 import styles from '../css/LoginSignUp.module.css'
 
 function SignUp(){ 
-  const[username,setUsername]=createSignal(" ");
-  const[surname,setSurname]=createSignal(" ");
-  const[password,setPassword]=createSignal(" ");
-  const[rePassword,setRePassword]=createSignal(" ");
-  const[email,setEmail]=createSignal(" ");
-  const[cellular,setCellular]=createSignal(" ");
-  const[birthday,setBirthday]=createSignal(" ");
- 
-  async function save(event){
-    event.preventDefault();
-    try{
-      await axios.post("http://localhost:8080/auth/signup",{
-        username: username,
-        surname: surname,
-        password: password,
-        rePassword: rePassword,
-        email: email,
-        cellular: cellular,
-        birthday: birthday,
-      });
-      alert("Ristoratore registrato con successo");
-    }catch(err){
-      alert(err);
+  const[nome,setNome]=createSignal("");
+  const[cognome,setCognome]=createSignal("");
+  const[password,setPassword]=createSignal("");
+  const[rePassword,setRePassword]=createSignal("");
+  const[email,setEmail]=createSignal("");
+  const[telefono,setTelefono]=createSignal("");
+  const[data_Nascita,setData_Nascita]=createSignal("");
+
+async function save(event) {
+  event.preventDefault();
+  try {
+    const response = await axios.post("http://localhost:8080/auth/signup", {
+      email: email(),
+      password: password(),
+      rePassword: rePassword(),
+      nome: nome(),
+      cognome: cognome(),
+      telefono: telefono(),
+      data_Nascita: data_Nascita()
+    });
+
+    const token = response.data.token;
+    sessionStorage.setItem('token',token);
+    window.location.href='/';
+  } catch (error) {
+    if (error.response) {
+      console.error("Errore:\t", error.response.data);
+      alert("Errore:\n" + error.response.data.message);
+    } else {
+      console.error("Errore durante la richiesta al server:\n", error.message);
+      alert("Errore durante la richiesta al server:\n" + error.message);
     }
   }
+}
 
     return(
     <main class={styles.cd_main}>
-    <form class={styles.signForm} method="POST" >
+    <form class={styles.signForm} >
       <div class={styles.elemGroup}>
       <label>
         Nome:
-        <input type="text"  placeholder='Mickey'
+        <input type="text" id="nome" placeholder='Mickey'
         onChange={(event)=>{
-          setUsername(event.target.value);
-          }}/>
+          setNome(event.target.value);
+          }} value={nome()} required/>
       </label>
       </div>
       <div class={styles.elemGroup}>
       <label>
         Cognome:
-        <input type="text"  onChange={(e)=>setSurname(e.target.value)} placeholder='Mouse'/>
+        <input type="text"   id="cognome" onChange={(e)=>setCognome(e.target.value)}  value={cognome()}placeholder='Mouse'required/>
       </label>
       </div>
       <div class={styles.elemGroup}>
       <label>
         Email:
-        <input type="email" onChange={(e)=>setEmail(e.target.value)} placeholder='mickeymouse@mail.com'/>
+        <input type="email" value={email()} id="email" onChange={(e)=>setEmail(e.target.value)} placeholder='mickeymouse@mail.com'required/>
       </label>
       </div>
       <div class={styles.elemGroup}>
       <label>
         Password:
-        <input type="password"  onChange={(e)=>setPassword(e.target.value)} placeholder='*****'/>
+        <input type="password" value={password()} id="password" onChange={(e)=>setPassword(e.target.value)} placeholder='*****'required/>
       </label>
       </div>
       <div class={styles.elemGroup}>
         <label>
           Conferma password:
-          <input type="password"  onChange={(e)=>setRePassword(e.target.value)} placeholder='*****'/>
+          <input type="password" value={rePassword()} id="rePassword" onChange={(e)=>setRePassword(e.target.value)} placeholder='*****'required/>
         </label>
       </div>
       <div class={styles.elemGroup}>
       <label>
         Cellulare:
-        <input type="tel"  onChange={(e)=>setCellular(e.target.value)} placeholder='+39 0000000000'/>
+        <input type="tel"  value={telefono()} id="telefono" onChange={(e)=>setTelefono(e.target.value)} placeholder='+39 0000000000'required/>
       </label>
       </div>
       <div class={styles.elemGroup}>
       <label>
         Data di nascita:
-        <input type="date" onChange={(e)=>setBirthday(e.target.value)}></input>
+        <input type="date" value={data_Nascita()} id="data_Nascita" onChange={(e)=>setData_Nascita(e.target.value)} required/>
       </label>
       </div>
       <p>Hai già un account? <a href='/login'>Accedi</a>  </p>
-      <button onClick={save} class={styles.buttonForm} style="margin-top:10px" type="submit">Registrati</button>
+      <button onClick={save} id="inviaForm" class={styles.buttonForm} style="margin-top:10px" type="submit">Registrati</button>
     </form>
     </main>
     );
+    
+    
+        
+
 }
 
 export default SignUp
