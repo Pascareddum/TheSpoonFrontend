@@ -1,0 +1,109 @@
+.LoginSignUp {
+    text-align: center;
+  }
+  
+  .logo {
+    animation: logo-spin infinite 20s linear;
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  .header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .link {
+    color: #000000;
+  }
+  
+  @keyframes logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .signForm {
+    width: 500px;
+    margin: 0 auto;
+    padding: 50px;
+    border: 2px solid #000000;
+    color:white;
+    background: linear-gradient(to left, #dc6709, #67300d) !important;
+
+  }
+
+  .signForm a{
+    color:white;
+  }
+  
+
+  
+  .elemGroup {
+    margin: 20px 0;
+  }
+  
+  .cd_main{
+    margin-top:50px;
+  }
+  
+  .elemGroup.inlined {
+    width: 49%;
+    display: inline-block;
+    margin-left: 1%;
+  }
+  
+  label {
+    display: block;
+    padding-bottom: 10px;
+    font-size: 1.25em;
+    color:white;
+  }
+  
+  input, select, textarea {
+    border-radius: 2px;
+    border: 2px solid #777;
+    box-sizing: border-box;
+    font-size: 1.25em;
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .elemGroup.inlined input {
+    width: 95%;
+    display: inline-block;
+  }
+  
+  textarea {
+    height: 250px;
+  }
+  
+  hr {
+    border: 1px dotted #ccc;
+  }
+  
+  .buttonForm {
+    height: 50px;
+    background: linear-gradient(to left, #dc6709, #67300d) !important;
+    border: none;
+    color: white;
+    font-size: 1.25em;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0 12px;
+  }
+  
+  .buttonForm:hover {
+    box-shadow: rgb(103, 48, 13) 0 20px 30px;
+    transition-duration: .1s;
+  }
+  

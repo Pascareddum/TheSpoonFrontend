@@ -1,0 +1,38 @@
+{
+  "name": "vite-template-solid",
+  "version": "0.0.0",
+  "description": "",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/parser": "^6.18.1",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-solid": "^0.13.1",
+    "postcss": "^8.4.33",
+    "solid-devtools": "^0.27.3",
+    "tailwindcss": "^3.4.1",
+    "vite": "^4.3.9",
+    "vite-plugin-solid": "^2.7.0"
+  },
+  "dependencies": {
+    "@solidjs/router": "^0.10.9",
+    "@supabase/supabase-js": "^2.39.3",
+    "axios": "^1.6.5",
+    "cors": "^2.8.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.21.2",
+    "solid": "^0.2.1",
+    "solid-app-router": "^0.4.2",
+    "solid-js": "^1.7.6",
+    "solid-supabase": "^0.5.0",
+    "whatwg-url": "^14.0.0"
+  }
+}

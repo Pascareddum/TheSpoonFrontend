@@ -1,0 +1,41 @@
+.container{
+    margin-top:50px;
+    margin-left:5%;
+    margin-right:5%;
+    color:white;
+}
+
+.products{
+    overflow-x:hidden;
+    overflow-y: scroll;
+    height: 800px;
+
+}
+
+.product{
+    background:white;
+    width: 300px;
+    height: 450px;
+    color:black;
+    display: inline-block;
+    border:1px solid #333333;
+    margin:20px;
+}
+
+.product button{
+    position: relative;
+    float: right;
+    top: 10px;
+    right: 5px;
+    width: 100px;
+    height: 30px;
+    background-image: linear-gradient(to right, #dc6709, #a14f05) !important;
+    color:white;
+}
+
+.product img{
+    background: white;
+    width:100%;
+    height:300px;
+    border:1px solid #333333;
+}
