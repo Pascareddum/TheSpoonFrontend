@@ -1,5 +1,5 @@
 import { createSignal } from 'solid-js';
-import styles from '../css/LoginSignUp.module.css';
+import styles from '../../css/Insert.module.css';
 import axios from 'axios';
 
   function Login(){
@@ -14,8 +14,7 @@ import axios from 'axios';
           password: password(),
         });
         const token = response.data.token;
-        sessionStorage.setItem('token',token);
-        console.log('Risposta del server:\n', response.data);
+        sessionStorage.setItem('tokenAuth',token);
         window.location.href='/';
       } catch (error) {
         if (error.response) {
@@ -30,7 +29,8 @@ import axios from 'axios';
   return (
     <>
     <main class={styles.cd_main}>
-    <form class={styles.signForm}>
+    <form class={styles.form}>
+      <h1>Login:</h1>
     <div class={styles.elemGroup}>
         <label for="email">Email</label>
         <input type="email" onChange={(e)=>setEmail(e.target.value)} value={email()}placeholder="mickeymouse@gmail.com"/>

@@ -1,38 +1,4 @@
-.LoginSignUp {
-    text-align: center;
-  }
-  
-  .logo {
-    animation: logo-spin infinite 20s linear;
-    height: 40vmin;
-    pointer-events: none;
-  }
-  
-  .header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-  }
-  
-  .link {
-    color: #000000;
-  }
-  
-  @keyframes logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  
-  .signForm {
+.form {
     width: 500px;
     margin: 0 auto;
     padding: 50px;
@@ -40,9 +6,9 @@
     color:white;
     background: linear-gradient(to left, #dc6709, #67300d) !important;
 
-  }
+}
 
-  .signForm a{
+.form a{
     color:white;
   }
   
@@ -55,6 +21,10 @@
   .cd_main{
     margin-top:50px;
   }
+
+  h1{
+    text-align: center;
+  }
   
   .elemGroup.inlined {
     width: 49%;
@@ -62,14 +32,14 @@
     margin-left: 1%;
   }
   
-  label {
+div.elemGroup label {
     display: block;
     padding-bottom: 10px;
     font-size: 1.25em;
     color:white;
   }
   
-  input, select, textarea {
+ div.elemGroup input, select, textarea {
     border-radius: 2px;
     border: 2px solid #777;
     box-sizing: border-box;
@@ -82,7 +52,32 @@
     width: 95%;
     display: inline-block;
   }
+
+  div.elemGroupAddress label{
+    font-size:1.0em;
+    margin:10px;
+    }
+
+    div.elemGroupAddress input{
+        border-radius: 2px;
+        border: 2px solid #777;
+        box-sizing: border-box;
+        font-size: 1.25em;
+        width: 80px;
+        padding: 10px;
+    
+    }
+
+    div.elemGroupIn input {
+      width: 95%;
+      display: inline-block;
+  }
   
+  div.elemGroupIn {
+    width: 49%;
+    display: inline-block;
+    margin-left: 1%;
+}
   textarea {
     height: 250px;
   }
@@ -107,3 +102,7 @@
     transition-duration: .1s;
   }
   
+  .select{
+    margin-top:30px;
+    width:200px;
+  }

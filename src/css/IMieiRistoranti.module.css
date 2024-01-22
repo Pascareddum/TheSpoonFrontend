@@ -3,25 +3,31 @@
     border:2.5px solid #333333;
     height: max-content;
     width: 100%;
-    text-align: center;
     margin-top:100px;
 }
 
-
-.options{
-    margin:auto;
-    width: 100%;
-
+.container h1{
+    text-align: center;
 }
 
-.options button {
+.container{
+    margin-bottom:10px;
+    
+}
+
+.container li{
+    font-size:25px;
+    margin-bottom:20px;
+}
+.button {
     border: 2px solid #333333;
-    width: 200px;
-    height:40px;
+    width: max-content;
+    height: 30px;
     background: linear-gradient(to right, #dc6709, #67300d) !important;
-    margin: 30px;
     text-align: center;
     font-size: 15px;
+    margin-right: 20px;;
     color: white;
     text-decoration: none;
+    margin-bottom:20px;
 }

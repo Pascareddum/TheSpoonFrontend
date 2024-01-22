@@ -21,7 +21,7 @@
 }
 
 
-.buttonSearch {
+.buttonBook {
 
     background-image: linear-gradient(to right, #dc6709, #67300d) !important;
     border-radius: 8px;
@@ -41,7 +41,7 @@
     touch-action: manipulation;
 }
 
-.buttonSearch:hover {
+.buttonBook:hover {
     box-shadow: rgb(103, 48, 13) 0 1px 30px;
     transition-duration: .1s;
 }

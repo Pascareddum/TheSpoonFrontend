@@ -9,11 +9,9 @@
     width: 50%;
   }
   .shell{
-    padding:80px 0;
     min-width: 250px;
     max-width:250px;
-    min-height: 500px;
-    max-height: 500px;
+    height:max-content;
     margin:10px;
     margin-right: 20px;
   }
@@ -48,8 +46,9 @@
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
   }
   .cardText{
-    padding-top:150%;
+    padding-top:130%;
   }
+  
   .cardText .category{
     text-align:center;
     font-size:12px;
@@ -59,6 +58,7 @@
     position:relative;
     transition: all 0.2s ease-in-out;
   }
+  
   .cardText .category > *{
     position:absolute;
     top:50%;
@@ -67,67 +67,46 @@
     -ms-transform: translate(-50%,-50%);
   
   }
-  .cardText .category > span{
-    padding: 12px 30px;
-    border: 1px solid #313131;
-    background:#dc6709;;
-    color:#fff;
-    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
-    border-radius:27px;
-    transition: all 0.05s ease-in-out;
-  
-  }
 
-  .cardText .category >span:hover{
-    box-shadow: rgb(103, 48, 13) 0 20px 30px;
-    transition-duration: .1s;
-  }
-  .cardProduct:hover .cardText .category > span{
-    border-color:#ddd;
-    box-shadow: none;
-    padding: 11px 28px;
-  }
-  .cardProduct:hover .cardText .category{
-    margin-top: 0px;
-  }
   .cardText .titleProduct{
     text-align:center;
   }
+
   .cardText .titleProduct h3{
     font-size:20px;
     font-weight:bold;
-    margin:15px auto;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     width:100%;
   }
-  .cardText .descriptionProd p{
-    margin:0;
-  }
-  /* Truncate */
+
+
+
   .cardText .descriptionProd {
     text-align:center;
     width: 100%;
-    height:62px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     margin-bottom:15px;
   }
-  
-  .category{
-    user-select: none;
-  }
 
+  .button{
+    margin-right:10px;
+    background:linear-gradient(to right, #dc6709, #b1551c) !important;
+    color:white;
+    height:25px;
+    font-weight:bold;
+  }
+  
+  
   @media screen and (max-width: 991px) {
     .cartProduct{
         margin:40px auto;
     }
-    .cardProduct .cardImg{
-        top:-40px;
-    }
+
     .cardProduct .cardImg img{
         box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
     }

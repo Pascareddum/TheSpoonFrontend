@@ -1,6 +1,6 @@
 import { createSignal} from "solid-js";
 import axios from 'axios';
-import styles from '../css/LoginSignUp.module.css'
+import styles from '../../css/Insert.module.css'
 
 function SignUp(){ 
   const[nome,setNome]=createSignal("");
@@ -25,12 +25,16 @@ async function save(event) {
     });
 
     const token = response.data.token;
-    sessionStorage.setItem('token',token);
-    window.location.href='/';
+    sessionStorage.setItem('tokenAuth',token);
+    window.location.href='/confermaSignUp';
   } catch (error) {
-    if (error.response) {
-      console.error("Errore:\t", error.response.data);
-      alert("Errore:\n" + error.response.data.message);
+    if (error.response) { //Risolvere messaggi errore di API
+      const[error,setError]=createSignal("");
+      setError(error.response.data.message);
+      const subErrors=error.response.data.subErrors;
+      console.error("Errore:\t", error);
+      alert("Errore:\n" + error);
+      console.error("Sottoerrore:",subErrors);
     } else {
       console.error("Errore durante la richiesta al server:\n", error.message);
       alert("Errore durante la richiesta al server:\n" + error.message);
@@ -40,7 +44,8 @@ async function save(event) {
 
     return(
     <main class={styles.cd_main}>
-    <form class={styles.signForm} >
+    <form class={styles.form}>
+      <h1>Registrazione:</h1>
       <div class={styles.elemGroup}>
       <label>
         Nome:
