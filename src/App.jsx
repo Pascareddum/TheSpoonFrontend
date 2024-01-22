@@ -29,6 +29,7 @@ import AggiungiPrdottoMenu from "./Pages/Ristorante/AggiungiProdottoMenu";
 import AggiungiProdottoMenu from "./Pages/Ristorante/AggiungiProdottoMenu";
 import VisualizzaProdottiMenu from "./Pages/Ristorante/VisualizzaProdottiMenu";
 import VisualizzaPrenotazioni from "./Pages/Ristorante/VisualizzaPrenotazioni";
+import VisualizzaOrdine from "./Pages/VisualizzaOrdineCompletato";
 
 function App () {
   const token=sessionStorage.getItem('tokenAuth');
@@ -81,6 +82,9 @@ function App () {
       <Route path="/aggiungiProdottoMenu" component={AggiungiProdottoMenu}/>
       <Route path="/visualizzaProdottiMenu" component={VisualizzaProdottiMenu}/>
       <Route path="/visualizzaPrenotazioni" component={VisualizzaPrenotazioni}/>
+      <Route path="/payment" component={VisualizzaOrdine}/>
+      <Route path="/success" component={<p>Successo</p>}/>
+      <Route path="/cancel" component={<p>Fallito</p>}/>
     </Router>
 </>
   )

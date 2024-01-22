@@ -13,9 +13,9 @@ export default function Ordini(){
 
     const[nomeMenu,setNomeMenu]=createSignal("");
     const[idOrdini,setIDOrdini]=createSignal([]);
+    const [ordini, setOrdini] = createSignal([]);
     const [mostraOrdini, setMostraOrdini] = createSignal(false);
-    const [ordini,setOrdini]=createSignal([]);
-    const [tipoOrdine,setTipoOrdine]=createSignal(false);
+     const [tipoOrdine,setTipoOrdine]=createSignal(false);
     const [tipo,setTipo]=createSignal(false);
     const [numeroTavolo,setNumeroTavolo]=createSignal("");
     const [chatID,setChatID]=createSignal("");
@@ -50,7 +50,7 @@ export default function Ordini(){
     }
 
     function Aggiungi(prodotto){
-      setIDOrdini({idProdotti:[...idOrdini(), prodotto.id],});
+      setIDOrdini([...idOrdini(), prodotto.id]);
       const prodottoEsistente = ordini().find(item => item.id === prodotto.id);
       if (prodottoEsistente) {
         // Se il prodotto è già nel carrello, aumenta la quantità di 1
@@ -81,14 +81,16 @@ export default function Ordini(){
           const response = await axios.post("http://localhost:8080/ordini/insertOrdine", {
            productsIDs: idOrdini(),
            numeroTavolo: numeroTavolo(),
-           chatID: '1234567',
+           chatID: chatID(),
            idRistorante: idRistorante,
            tipologia: tipologia(),
           },{headers: {
             'Content-Type': 'application/json'
           }});
           alert("ORDINE EFFETTUATO");
-          window.location.href=('/');
+          console.log(response.data);
+          localStorage.setItem('orderResponse', JSON.stringify(response.data));
+          window.location.href=('/payment');
         } catch (error) {
           if (error.response) {
             console.error("Errore:\t", error.response.data);
@@ -101,7 +103,7 @@ export default function Ordini(){
       }
     
       function chatIDInfo(){
-        alert("SUUCA");
+        alert("Contatta @TheSpoonBot su telegram e inserisci in questo campo il ChatID che ti restituirà, facendolo potrai ottenere notifiche sullo stato del tuo ordine");
       }
     return(
       <>

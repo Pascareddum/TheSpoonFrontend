@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@solidjs/router": "^0.10.9",
+    "@stripe/stripe-js": "^2.4.0",
     "@supabase/supabase-js": "^2.39.3",
     "axios": "^1.6.5",
     "cors": "^2.8.5",
