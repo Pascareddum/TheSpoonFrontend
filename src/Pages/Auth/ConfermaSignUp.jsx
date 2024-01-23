@@ -1,6 +1,7 @@
 import styles from '../../css/ConfermaSignUp.module.css';
 
 function ConfermaSignUp(){
+    //Conferma all'utente di essersi registrato con successo
     return(
         <>
         <div class={styles.container}>

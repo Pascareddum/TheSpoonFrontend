@@ -23,7 +23,6 @@ import AggiungiProdotto from "./Pages/Prodotto/AggiungiProdotto";
 import VisualizzaTavoli from "./Pages/Ristorante/VisualizzzaTavoli";
 import InserisciTavolo from "./Pages/Ristorante/InserisciTavolo";
 import VisualizzaProdotti from "./Pages/Prodotto/VisualizzaProdotti";
-import AggiungiPrdottoMenu from "./Pages/Ristorante/AggiungiProdottoMenu";
 import AggiungiProdottoMenu from "./Pages/Ristorante/AggiungiProdottoMenu";
 import VisualizzaProdottiMenu from "./Pages/Ristorante/VisualizzaProdottiMenu";
 import VisualizzaPrenotazioni from "./Pages/Ristorante/VisualizzaPrenotazioni";
@@ -31,61 +30,56 @@ import VisualizzaOrdine from "./Pages/VisualizzaOrdineCompletato";
 import VisualizzaOrdini from "./Pages/Ristorante/VisualizzaOrdini";
 
 function App () {
+  //Token di autenticazione
   const token=sessionStorage.getItem('tokenAuth');
-  
- 
-
   return(
     <>
       <div class={styles.topnav}>
-    <a href="/"><img alt="logo" style="width:50px;height: 50px;" src={TheSpoonLogo}/></a>
-    <a href="/about">ABOUT</a>
-
-    <div class={styles.topnavCentered}>
-    <a href="/"style="font-size: 20px;">THE SPOON</a>
-    </div>
-    <div class={styles.topnavRight}>
-    <a href="/cerca">CERCA</a>
-
-    <a href="/ristoranti">RISTORANTI</a>
-        
-        {token===null ? (
-        <a href="/login"><img style="width: 25px;height: 25px;" alt="logo"  src={UserIcon}/> </a>):null}
-        {token!==null?(<a href="/dashBoard">DASHBOARD</a>):null}
-    </div>
-    </div>    
+        <a href="/"><img alt="logo" style="width:50px;height: 50px;" src={TheSpoonLogo}/></a>
+        <a href="/about">ABOUT</a>
+        <div class={styles.topnavCentered}>
+          <a href="/"style="font-size: 20px;">THE SPOON</a>
+        </div>
+        <div class={styles.topnavRight}>
+          <a href="/cerca">CERCA</a>
+          <a href="/ristoranti">RISTORANTI</a>
+          {token===null ? (
+            <a href="/login"><img style="width: 25px;height: 25px;" alt="logo"  src={UserIcon}/> </a>):null}
+          {token!==null?(<a href="/dashBoard">DASHBOARD</a>):null}
+        </div>
+      </div>    
     
-    <Router>
-      <Route path="/about" component={About}/>
-      <Route path="/signUp" component={SignUp}/>
-      <Route path="/ristoranti" component={Ristoranti}/>
-      <Route path="/" component={Home}/>
-      <Route path="/login" component={Login}/>
-      <Route path="/inserisciRistorante" component={InserisciRistorante}/>
-      <Route path="/prenota" component={PrenotaRistorante}/>
-      <Route path="/dashBoard" component={DashBoard}/>
-      <Route path="/ordini" component={Ordini}/>
-      <Route path="/modifcaAuth" component={ModificaAuth}/>
-      <Route path="/confermaSignUp" component={ConfermaSignUp}/>
-      <Route path="/modificaPassword" component={ModficaPassword}/>
-      <Route path="/iMieiRistoranti" component={IMieiRistoranti}/>
-      <Route path="/modificaRistorante" component={ModificaRistorante}/>
-      <Route path="/cerca" component={Cerca}/>
-      <Route path="/visualizzaMenu" component={VisualizzaMenu}/>
-      <Route path="/inserisciMenu" component={InserisciMenu}/>
-      <Route path="/aggiungiProdotto" component={AggiungiProdotto}/>
-      <Route path="/visualizzaProdotti" component={VisualizzaProdotti}/>
-      <Route path="/visualizzaTavoli" component={VisualizzaTavoli}/>
-      <Route path="/inserisciTavolo" component={InserisciTavolo}/>
-      <Route path="/aggiungiProdottoMenu" component={AggiungiProdottoMenu}/>
-      <Route path="/visualizzaProdottiMenu" component={VisualizzaProdottiMenu}/>
-      <Route path="/visualizzaPrenotazioni" component={VisualizzaPrenotazioni}/>
-      <Route path="/payment" component={VisualizzaOrdine}/>
-      <Route path="/success" component={<p>Successo</p>}/>
-      <Route path="/cancel" component={<p>Fallito</p>}/>
-      <Route path="/visualizzaOrdini" component={VisualizzaOrdini}/>
-    </Router>
-</>
+      <Router> 
+        <Route path="/about" component={About}/>
+        <Route path="/signUp" component={SignUp}/>
+        <Route path="/ristoranti" component={Ristoranti}/>
+        <Route path="/" component={Home}/>
+        <Route path="/login" component={Login}/>
+        <Route path="/inserisciRistorante" component={InserisciRistorante}/>
+        <Route path="/prenota" component={PrenotaRistorante}/>
+        <Route path="/dashBoard" component={DashBoard}/>
+        <Route path="/ordini" component={Ordini}/>
+        <Route path="/modifcaAuth" component={ModificaAuth}/>
+        <Route path="/confermaSignUp" component={ConfermaSignUp}/>
+        <Route path="/modificaPassword" component={ModficaPassword}/>
+        <Route path="/iMieiRistoranti" component={IMieiRistoranti}/>
+        <Route path="/modificaRistorante" component={ModificaRistorante}/>
+        <Route path="/cerca" component={Cerca}/>
+        <Route path="/visualizzaMenu" component={VisualizzaMenu}/>
+        <Route path="/inserisciMenu" component={InserisciMenu}/>
+        <Route path="/aggiungiProdotto" component={AggiungiProdotto}/>
+        <Route path="/visualizzaProdotti" component={VisualizzaProdotti}/>
+        <Route path="/visualizzaTavoli" component={VisualizzaTavoli}/>
+        <Route path="/inserisciTavolo" component={InserisciTavolo}/>
+        <Route path="/aggiungiProdottoMenu" component={AggiungiProdottoMenu}/>
+        <Route path="/visualizzaProdottiMenu" component={VisualizzaProdottiMenu}/>
+        <Route path="/visualizzaPrenotazioni" component={VisualizzaPrenotazioni}/>
+        <Route path="/payment" component={VisualizzaOrdine}/>
+        <Route path="/success" component={<p>Successo</p>}/>
+        <Route path="/cancel" component={<p>Fallito</p>}/>
+        <Route path="/visualizzaOrdini" component={VisualizzaOrdini}/>
+      </Router>
+    </>
   )
 };
 export default App;
