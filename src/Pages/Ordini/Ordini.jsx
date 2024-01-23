@@ -15,9 +15,9 @@ export default function Ordini(){
     const[idOrdini,setIDOrdini]=createSignal([]);
     const [ordini, setOrdini] = createSignal([]);
     const [mostraOrdini, setMostraOrdini] = createSignal(false);
-     const [tipoOrdine,setTipoOrdine]=createSignal(false);
+    const [tipoOrdine,setTipoOrdine]=createSignal(false);
     const [tipo,setTipo]=createSignal(false);
-    const [numeroTavolo,setNumeroTavolo]=createSignal("");
+    const [numeroTavolo,setNumeroTavolo]=createSignal(null);
     const [chatID,setChatID]=createSignal("");
     const [tipologia,setTipologia]=createSignal("0");
 
@@ -73,7 +73,7 @@ export default function Ordini(){
       setMostraOrdini(false);
       setTipoOrdine(true);
       if(tipo()==true)
-      setTipologia("1");
+        setTipologia("1");
     }
 
     async function insert(){

@@ -1,6 +1,7 @@
 import axios from "axios"
 import styles from "../css/Insert.module.css"
 import { createSignal,createEffect } from "solid-js"
+
 export default function PrenotaRistorante(){
   const[email,setEmail]=createSignal("");
   const[telefono,setTelefono]=createSignal("");
@@ -62,6 +63,7 @@ export default function PrenotaRistorante(){
     
   //Funzione di prenotazione
   async function prenota() {
+    preventDefault()
     try {
       //Chiamata all'API di prenotazione
       const response = await axios.post("http://localhost:8080/prenotazioni/insertPrenotazione", {

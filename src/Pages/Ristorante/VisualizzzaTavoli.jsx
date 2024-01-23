@@ -26,7 +26,7 @@ function VisualizzaTavoli(){
 
             {tavoliList().tavoli.map((tavolo) => (
                 <div class={styles.dashboard}>
-                    <li key={tavolo.numeroTavolo}>Nr. tavolo:{tavolo.numeroTavolo} | Capacità:{tavolo.capacita} persone | Stato: {tavolo.stato===0 ? 'Libero' : 'Prenotato'}</li>
+                    <li key={tavolo.numeroTavolo}>Nr. tavolo:{tavolo.numeroTavolo} | Capacità:{tavolo.capacita} persone </li>
                 </div>
         ))}  
             </div>
