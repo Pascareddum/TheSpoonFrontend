@@ -26,6 +26,7 @@
     text-align: center;
     color: #fff;
     border-radius: 0 5px 5px 0;
+    
     cursor: pointer;
     font-size: 20px;
 }
@@ -48,6 +49,8 @@
     height: 250px;
     position: relative;
     background: white;
+    border:1px solid #333333;
+    margin-bottom:20px;
     float:right;
 }
 .container img{

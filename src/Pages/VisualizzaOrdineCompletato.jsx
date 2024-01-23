@@ -13,7 +13,6 @@ function VisualizzaOrdine() {
 
   return (
     <div>
-      <h1>Visualizza Ordine</h1>
       <DettagliOrdine data={data} />
     </div>
   );

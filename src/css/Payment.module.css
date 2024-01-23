@@ -1,0 +1,28 @@
+.order{
+    background: white;
+    border-collapse:collapse;
+    align-items: center;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+}
+
+.container{
+    text-align: center;
+    width:100%;
+    background: white;;
+}
+
+table{
+    width:50%;
+}
+
+.button{
+    margin-bottom:10px;
+    background: linear-gradient(to right, #dc6709, #9f501f) !important;
+    color:white;
+    font-weight: bold;
+    font-size: 18px;
+    height: 35px;
+    width: 75px;
+}

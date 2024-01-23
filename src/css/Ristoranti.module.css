@@ -8,14 +8,13 @@
 .products{
     overflow-x:hidden;
     overflow-y: scroll;
-    height: 800px;
-
+    height: max-content;
 }
 
 .product{
     background:white;
-    width: 300px;
-    height: 450px;
+    width: max-content;
+    height: max-content;
     color:black;
     display: inline-block;
     border:1px solid #333333;
@@ -23,14 +22,15 @@
 }
 
 .product button{
-    position: relative;
-    float: right;
-    top: 10px;
+    
     right: 5px;
     width: 100px;
     height: 30px;
+    font-weight: bold;
     background-image: linear-gradient(to right, #dc6709, #a14f05) !important;
     color:white;
+    margin-right:10px;
+    margin-bottom:10px;
 }
 
 .product img{

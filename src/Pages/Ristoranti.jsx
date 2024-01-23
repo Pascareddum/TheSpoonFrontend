@@ -1,42 +1,48 @@
 import restaurantIcon from "../images/restaurant_icon.png"
 import styles from "../css/Ristoranti.module.css"
-const Ristoranti=()=>{
+import { createEffect,createSignal } from "solid-js";
+import axios from "axios";
+
+
+
+function Ristoranti(){
+    const [ricercaList,setRicercaList]=createSignal({
+        ricerca: [],
+    });
+    
+    createEffect(()=>{ const fetchData = async () => {
+        try {
+    const response = await axios.post(`http://localhost:8080/ristorante/ricercaRistorante/`,{},);
+    setRicercaList({...ricercaList(), ricerca: response.data });
+    }catch(error) {
+    console.error("Errore durante la ricerca:", error.response || error.message || error);
+    }
+    };
+    fetchData();
+    });
+
+    function ordina(IDRistorante){
+        sessionStorage.setItem('IdRistorante',IDRistorante);
+        window.location.href=('/ordini');
+    }
+      function prenota(IDRistorante){
+        sessionStorage.setItem('IdRistorante',IDRistorante);
+        window.location.href=('/prenota');
+      }
     return(
         <div class={styles.container}>
 <div class={styles.products}>
+{ricercaList().ricerca.map((cerca) => (
         <div class={styles.product}>
             <img src={restaurantIcon} alt="immagine prodotto"/>
-            <h3>Prodotto</h3>
-            <p>Descrizione</p>
-            <button>PRENOTA</button>
+            <h3>{cerca.nome}</h3>
+            <h4>+{cerca.telefono}</h4>
+            <h5>Via {cerca.via} {cerca.n_Civico}, {cerca.cap}, {cerca.provincia}</h5>
+                  <button onClick={()=> ordina(cerca.id)}>ORDINA</button>
+                  <button onClick={()=> prenota(cerca.id)}>PRENOTA</button>
         </div>
-        <div class={styles.product}>
-            <img src={restaurantIcon} alt="immagine prodotto"/>
-            <h3>Prodotto</h3>
-            <p>Descrizione</p>
-            <button>PRENOTA</button>
-        </div>
-        <div class={styles.product}>
-            <img src={restaurantIcon} alt="immagine prodotto"/>
-            <h3>Prodotto</h3>
-            <p>Descrizione</p>
-            <button>PRENOTA</button>
-        </div>
-        <div class={styles.product}>
-            <img src={restaurantIcon} alt="immagine prodotto"/>
-            <h3>Prodotto</h3>
-            <p>Descrizione</p>
-            <button>PRENOTA</button>
-        </div>
-        <div class={styles.product}>
-            <img src={restaurantIcon} alt="immagine prodotto"/>
-            <h3>Prodotto</h3>
-            <p>Descrizione</p>
-            <button>PRENOTA</button>
-        </div>
+))}
     </div>
-
-    
         </div>
     )
 }

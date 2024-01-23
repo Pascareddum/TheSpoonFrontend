@@ -2,11 +2,9 @@ import Login from "./Pages/Auth/Login";
 import Home from "./Pages/Home";
 import TheSpoonLogo from "./images/logo_The_Spoon_white.png";
 import UserIcon from "./images/User_icon_white.png";
-import SearchIcon from "./images/search.png"
 import {Router,Route} from '@solidjs/router'
 import styles from './css/App.module.css'
 import SignUp from "./Pages/Auth/SignUp";
-import CercaRistoranti from "./Pages/Ristorante/CercaRistorante";
 import InserisciRistorante from "./Pages/Dashboard/InserisciRistorante";
 import PrenotaRistorante from "./Pages/Prenota";
 import DashBoard from "./Pages/Dashboard/DashBoard";
@@ -30,6 +28,7 @@ import AggiungiProdottoMenu from "./Pages/Ristorante/AggiungiProdottoMenu";
 import VisualizzaProdottiMenu from "./Pages/Ristorante/VisualizzaProdottiMenu";
 import VisualizzaPrenotazioni from "./Pages/Ristorante/VisualizzaPrenotazioni";
 import VisualizzaOrdine from "./Pages/VisualizzaOrdineCompletato";
+import VisualizzaOrdini from "./Pages/Ristorante/VisualizzaOrdini";
 
 function App () {
   const token=sessionStorage.getItem('tokenAuth');
@@ -62,7 +61,6 @@ function App () {
       <Route path="/ristoranti" component={Ristoranti}/>
       <Route path="/" component={Home}/>
       <Route path="/login" component={Login}/>
-      <Route path="/cercaRistoranti" component={CercaRistoranti}/>
       <Route path="/inserisciRistorante" component={InserisciRistorante}/>
       <Route path="/prenota" component={PrenotaRistorante}/>
       <Route path="/dashBoard" component={DashBoard}/>
@@ -85,6 +83,7 @@ function App () {
       <Route path="/payment" component={VisualizzaOrdine}/>
       <Route path="/success" component={<p>Successo</p>}/>
       <Route path="/cancel" component={<p>Fallito</p>}/>
+      <Route path="/visualizzaOrdini" component={VisualizzaOrdini}/>
     </Router>
 </>
   )

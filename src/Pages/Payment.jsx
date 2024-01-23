@@ -2,7 +2,7 @@
 
 import { createSignal } from "solid-js";
 import axios from "axios"; 
-
+import styles from '../css/Payment.module.css';
 
 
 function DettagliOrdine(props) {
@@ -28,8 +28,10 @@ const handlePayment = async () => {
   };
 
   return (
-    <div>
+    <>
+    <div class={styles.container}>
     <h1>Dettagli Ordine</h1>
+    <div class={styles.order}>
     <table>
       <tbody>
         <tr>
@@ -66,8 +68,11 @@ const handlePayment = async () => {
         </tr>
       </tbody>
     </table>
-    <button onClick={handlePayment}>Paga</button>
   </div>
+  <button class={styles.button} onClick={handlePayment}>Paga</button>
+
+  </div>
+  </>
   );
 }
 

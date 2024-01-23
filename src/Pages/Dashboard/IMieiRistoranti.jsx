@@ -39,6 +39,11 @@ function IMieiRistoranti(){
         sessionStorage.setItem('IdRistorante',restaurantId);
         window.location.href=('/visualizzaPrenotazioni');
     }
+
+    function VisualizzaOrdini(restaurantId){
+        sessionStorage.setItem('IdRistorante',restaurantId);
+        window.location.href=('/visualizzaOrdini')
+    }
     return(
         <>
     
@@ -51,6 +56,8 @@ function IMieiRistoranti(){
                         <button class={styles.button} onClick={() =>VisualizzaMenus(restaurant.id)}>VISUALIZZA I MENÙ</button>
                         <button class={styles.button} onClick={()=>VisualizzaTavoli(restaurant.id)}>VISUALIZZA TAVOLI</button>
                         <button class={styles.button} onClick={()=>VisualizzaPrenotazioni(restaurant.id)}>VISUALIZZA PRENOTAZIONI</button>
+                        <button class={styles.button} onClick={()=>VisualizzaOrdini(restaurant.id)}>VISUALIZZA ORDINI</button>
+
 
                 </div>
         ))}

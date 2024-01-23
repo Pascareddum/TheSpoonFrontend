@@ -11,6 +11,7 @@ export default function PrenotaRistorante(){
         tavoli: [],
     });
     const [tavoliSelezionati,setTavoliSelezionati] = createSignal([]);
+    const [chatID,setChatID]=createSignal();
     const idRistorante=sessionStorage.getItem("IdRistorante");
 
     createEffect(()=>{ const fetchData = async () => {
@@ -57,24 +58,22 @@ export default function PrenotaRistorante(){
     
 
     async function prenota() {
-        //const [ore, minuti, secondi] = ora().split(':');
-        const oraSQL=new Date();
-        //oraSQL.setHours(parseInt(ore,10),parseInt(minuti,10),parseInt(secondi,10));
-        //console.log(oraSQL);
         try {
           const response = await axios.post("http://localhost:8080/prenotazioni/insertPrenotazione", {
                 tableIDs: tavoliSelezionati(),
                 data: data(),
-                ora: "13:00:00",
+                ora: ora(),
                 nr_Persone: nrPersone(),
                 email:email(),
                 telefono: telefono(),
                 idRistorante: idRistorante,
-                chatID: '000000000',
+                chatID: chatID(),
           },{headers: {
             'Content-Type': 'application/json'
           }});
-          console.log(response.data);
+          alert("Prenotazione effettuata!");
+          window.location.href=('/')
+          
         } catch (error) {
           if (error.response) {
             console.error("Errore:\t", error.response.data);
@@ -86,7 +85,9 @@ export default function PrenotaRistorante(){
         }
       }
 
-
+ function chatIDInfo(){
+        alert("Contatta @TheSpoonBot su telegram e inserisci in questo campo il ChatID che ti restituirà, facendolo potrai ottenere notifiche sullo stato del tuo ordine");
+      }
     
 
 
@@ -114,7 +115,11 @@ export default function PrenotaRistorante(){
         </div>
         <div class={styles.elemGroupIn}>
             <label>Ora:</label>
-            <input type="time"  onChange={(e)=>setOra(e.target.value)} value={ora()} required=""/>
+            <input type="time"  step="1" onChange={(e)=>setOra(e.target.value)} value={ora()} required=""/>
+        </div>
+        <div class={styles.elemGroupIn}>
+            <label>Chat ID<a href="" onClick={()=>chatIDInfo()}>(Cos'è?)</a>: </label>
+            <input type="number" onChange={(e)=>setChatID(e.target.value)} value={chatID()} required=""/>
         </div>
         <hr/>
 
