@@ -18,7 +18,8 @@ function IMieiRistoranti(){
           const response = await axios.get(`http://localhost:8080/ristorante/restaurantsList/${idAuth}`);
           setRestaurantList({ ...restaurantList(), restaurants: response.data });
         } catch (error) {
-          console.error("Errore durante la richiesta GET", error);
+            //Gestione degli errori
+            console.error("Errore durante la richiesta GET", error);
         }
       };
         fetchData();

@@ -9,12 +9,14 @@ export default function InserisciTavolo(){
     
     const tokenAuth=sessionStorage.getItem('tokenAuth');
     const idRistorante=sessionStorage.getItem('IdRistorante');
+
+    //Funzione per l'inserimento di un tavolo all'interno di un ristorante
     async function insert(event) {
         event.preventDefault();
       
             try {
+              //Chiamata all'API
           const response = await axios.post("http://localhost:8080/ristorante/insertTavolo", {
-           
                 numeroTavolo: numeroTavolo(),
                 stato: 0,
                 capacita: capacita(),
@@ -28,6 +30,7 @@ export default function InserisciTavolo(){
             alert("Tavolo inserito!");
             window.location.href=('/visualizzaTavoli');
               } catch (error) {
+                //Gestione degli errori
             if (error.response) {
               console.error("Errore:\n", error.response.data);
               alert("Errore:\n" + error.response.data.message);

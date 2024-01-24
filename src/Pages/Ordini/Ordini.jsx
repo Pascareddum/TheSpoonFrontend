@@ -23,11 +23,14 @@ export default function Ordini(){
 
 
     const idRistorante=sessionStorage.getItem("IdRistorante");
+    //Funzione per ottenere una lista dei menù di un ristorante
     createEffect(()=>{ const fetchData = async () => {
         try {  
+          //Chiamata all'API
           const response = await axios.get(`http://localhost:8080/ristorante/getMenuByIDRistorante/${idRistorante}`);
           setMenusList({...menusList(), menus: response.data });
         } catch (error) {
+          //Gestione degli errori
           console.error("Errore durante la richiesta GET", error);
         }
       };
@@ -37,18 +40,22 @@ export default function Ordini(){
 
     function prodotti(menuID,nomeMenu){
         setNomeMenu(nomeMenu);
+        //Funzione per ottenere i prodotti di un menù
        const prodottiMenu = async () => {
             try {  
+              //Chiamata all'API
               const response = await axios.get(`http://localhost:8080/ristorante/getProdottiByIDMenu/${menuID}`);
               setProdottiList({...prodottiList(), prodotti: response.data });
 
             } catch (error) {
+              //Gestione degli errori
               console.error("Errore durante la richiesta GET", error);
             }
           };
             prodottiMenu();
     }
 
+    //Funzione per aggiungere un prodotto alla lista degli ordini
     function Aggiungi(prodotto){
       setIDOrdini([...idOrdini(), prodotto.id]);
       const prodottoEsistente = ordini().find(item => item.id === prodotto.id);
@@ -64,11 +71,13 @@ export default function Ordini(){
       }
     }
 
+    //Funzione di visualizzazione del proprio ordine
     function Visualizza(){
       setMostraOrdini(true);
       //console.log(prodottiDaMostrare());
     }
 
+    //Funzione per poter aggiungere un prodotto al proprio ordine
     function Ordina(){
       setMostraOrdini(false);
       setTipoOrdine(true);
@@ -76,8 +85,10 @@ export default function Ordini(){
         setTipologia("1");
     }
 
+    //Funzione di inoltro ordine al ristorante
     async function insert(){
         try {
+          //Chiamata all'API
           const response = await axios.post("http://localhost:8080/ordini/insertOrdine", {
            productsIDs: idOrdini(),
            numeroTavolo: numeroTavolo(),
@@ -92,6 +103,7 @@ export default function Ordini(){
           localStorage.setItem('orderResponse', JSON.stringify(response.data));
           window.location.href=('/payment');
         } catch (error) {
+          //Gestione dell'errore
           if (error.response) {
             console.error("Errore:\t", error.response.data);
             alert("Errore:\n" + error.response.data.message);
@@ -102,6 +114,7 @@ export default function Ordini(){
         }
       }
     
+      //alert di info sul funzionamento del chatID
       function chatIDInfo(){
         alert("Contatta @TheSpoonBot su telegram e inserisci in questo campo il ChatID che ti restituirà, facendolo potrai ottenere notifiche sullo stato del tuo ordine");
       }

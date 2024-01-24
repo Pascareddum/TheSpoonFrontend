@@ -51,6 +51,7 @@ function Cerca(){
             <div class={styles.description}>
               <h1>{cerca.nome}</h1>
               <h3>Indrizzo</h3>
+              <h4>Via {cerca.via},{cerca.n_Civico}, {cerca.cap}, {cerca.provincia}</h4>
             </div>
             <div class={styles.navLink}>
               <a href="#"><img src={menuIcon}/></a>

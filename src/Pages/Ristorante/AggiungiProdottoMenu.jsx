@@ -13,23 +13,28 @@ const token=sessionStorage.getItem('tokenAuth');
 const idRistorante=sessionStorage.getItem("IdRistorante");
 const idMenu=sessionStorage.getItem("IDMenu");
 
-
+//Funzione per ottenere i dettagli di un ristorante tramite il proprio ID
 createEffect(()=>{ const fetchData = async () => {
   try {
+    //Chiamata all'API
     const response = await axios.get(`http://localhost:8080/ristorante/getRistorante/${idRistorante}`);
     setNomeRistorante(response.data.nome);
   } catch (error) {
+    //Gestione degli errori
     console.error("Errore durante la richiesta GET", error);
   }
 }
 fetchData();
 });
 
+//Funzione per ottenere il menù tramite il proprio ID
 createEffect(()=>{ const fetchData = async () => {
   try {
+    //Chiamata all'API
     const response = await axios.get(`http://localhost:8080/ristorante/getMenuByID/${idMenu}`);
     setNomeMenu(response.data.nome);
   } catch (error) {
+    //Gestione degli errori
     console.error("Errore durante la richiesta GET", error);
   }
 }
@@ -37,22 +42,25 @@ fetchData();
 
 });
 
+//Funzoione per ottenre una lista di prodotti di un ristorante tramite il proprio ID
 createEffect(()=>{ const fetchData = async () => {
     try {  
-       
+       //Chiamata all'API
       const response = await axios.get(`http://localhost:8080/prodotto/getAllProdottiByIdRistorante/${idRistorante}`);
       setProdottiList({...prodottiList(), prodotti: response.data });
     } catch (error) {
+      //Gestione degli errori
       console.error("Errore durante la richiesta GET", error);
     }
   };
     fetchData();
 });
-
+//funzione di insermento di un prodotto all'interno del menù
 async function insert(event) {
   if (selectedProdotto() !== 0) {
   event.preventDefault();
       try {
+        //Chiamata all'API
     const response = await axios.post(`http://localhost:8080/ristorante/addProductToMenu/${idMenu}/${selectedProdotto()}/${idRistorante}`, {},
     {  headers: {
       Authorization: `Bearer ${token}`,
@@ -62,6 +70,7 @@ async function insert(event) {
     alert("Prodotto inserito!");
     window.location.href=('/visualizzaMenu');
   } catch (error) {
+    //Gestione degli errori
       if (error.response) {
         console.error("Errore:\n", error.response.data);
         alert("Errore:\n" + error.response.data.message);
@@ -70,7 +79,7 @@ async function insert(event) {
         alert("Errore durante la richiesta al server:\n" + error.message);
       }
     }
-  }else{
+  }else{ //Se l'utente non ha inserito niente, la chiamata non verrà eseguita
     alert("Inserisci un prodotto!");
   }
 }

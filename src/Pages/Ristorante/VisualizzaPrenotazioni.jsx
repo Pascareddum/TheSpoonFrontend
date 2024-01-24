@@ -8,22 +8,25 @@ export default function VisualizzaPrenotazioni(){
     const idRistorante=sessionStorage.getItem("IdRistorante");
     const token=sessionStorage.getItem('tokenAuth');
 
-    
+    //Funzione per ottenere una lista delle prenotazioni tramite l'id del ristorante
     createEffect(()=>{ const fetchData = async () => {
         try {  
-           
+          //Chiamata all'API
           const response = await axios.get(`http://localhost:8080/prenotazioni/getAllPrenotazioni/${idRistorante}`,{headers: {
             Authorization: `Bearer ${token}`,}});
           setPrenotazioniList({...prenotazioniList(), prenotazioni: response.data });
         } catch (error) {
+          //Gestione degli errori
           console.error("Errore durante la richiesta GET", error);
         }
       };
         fetchData();
     });
 
+    //Funzione per confermare la prenotazione
     async function conferma(idPrenotazione){
       try {
+        //Chiamata all'API
         const response = await axios.post(`http://localhost:8080/prenotazioni/confermaPrenotazione/${idPrenotazione}`,
         null,
         { headers: {
@@ -33,6 +36,7 @@ export default function VisualizzaPrenotazioni(){
         alert("Prenotazione confermata!")
         window.location.reload();
       } catch (error) {
+        //Gestione degli errori
         if (error.response) {
           console.error("Errore:\t", error.response.data);
           alert("Errore:\n" + error.response.data.message);

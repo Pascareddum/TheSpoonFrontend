@@ -6,11 +6,15 @@ function VisualizzaTavoli(){
         tavoli: [],
     });
     const idRistorante=sessionStorage.getItem("IdRistorante");
+
+     //Funzione per ottenere una lista dei tavoli tramite l'id del ristorante
     createEffect(()=>{ const fetchData = async () => {
         try {  
+         //Chiamata all'API
           const response = await axios.get(`http://localhost:8080/ristorante/getTavoliRistorante/${idRistorante}`);
           setTavoliList({...tavoliList(), tavoli: response.data });
         } catch (error) {
+            //Gestione degli errori
           console.error("Errore durante la richiesta GET", error);
         }
       };

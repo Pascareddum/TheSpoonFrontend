@@ -10,10 +10,12 @@ function AggiungiProdotto(){
     const idRestaurant=sessionStorage.getItem("IdRistorante");
     const tokenAuth=sessionStorage.getItem('tokenAuth');
 
+    //Funzione per aggiungere un prodotto all'interno di un ristorante
     async function insert(event) {
         event.preventDefault();
       
             try {
+                //chiamata all'API
                 const response = await axios.post("http://localhost:8080/prodotto/insertProdotto", {
                 nome: nome(),
                 descrizione: descrizione(),
@@ -28,6 +30,7 @@ function AggiungiProdotto(){
           alert("Prodotto inserito!");
           window.location.href=('/visualizzaMenu');
         } catch (error) {
+          //Gestione degli errori
             if (error.response) {
               console.error("Errore:\n", error.response.data);
               alert("Errore:\n" + error.response.data.message);

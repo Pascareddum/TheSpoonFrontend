@@ -28,6 +28,8 @@ import VisualizzaProdottiMenu from "./Pages/Ristorante/VisualizzaProdottiMenu";
 import VisualizzaPrenotazioni from "./Pages/Ristorante/VisualizzaPrenotazioni";
 import VisualizzaOrdine from "./Pages/VisualizzaOrdineCompletato";
 import VisualizzaOrdini from "./Pages/Ristorante/VisualizzaOrdini";
+import PaymentS from "./Pages/PaymentS";
+import PaymentC from "./Pages/PaymentC";
 
 function App () {
   //Token di autenticazione
@@ -75,8 +77,8 @@ function App () {
         <Route path="/visualizzaProdottiMenu" component={VisualizzaProdottiMenu}/>
         <Route path="/visualizzaPrenotazioni" component={VisualizzaPrenotazioni}/>
         <Route path="/payment" component={VisualizzaOrdine}/>
-        <Route path="/success" component={<p>Successo</p>}/>
-        <Route path="/cancel" component={<p>Fallito</p>}/>
+        <Route path="/success" component={PaymentS}/>
+        <Route path="/cancel" component={PaymentC}/>
         <Route path="/visualizzaOrdini" component={VisualizzaOrdini}/>
       </Router>
     </>

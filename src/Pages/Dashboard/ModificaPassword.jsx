@@ -6,9 +6,11 @@ function ModficaPassword(){
     const[rePassword,setRePassword]=createSignal("");
     const token=sessionStorage.getItem('tokenAuth');
 
+    //Funzione di modifica passowrd per il ristoratore
     async function modify(event) {
         event.preventDefault();
         try {
+          //Chiamata all'API
           const response = await axios.post("http://localhost:8080/dashboard/updatePassword", {
             password:password(),
             rePassword:rePassword(),
@@ -22,6 +24,7 @@ function ModficaPassword(){
           window.location.href='/dashBoard';
     
         } catch (error) {
+          //Gestione degli errori
           if (error.response) {
             console.error("Errore:\t", error.response.data);
             alert("Errore:\n" + error.response.data.message);

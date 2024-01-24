@@ -10,10 +10,12 @@ function ModificaAuth(){
     const[cognome,setCognome]=createSignal("");
     const[email,setEmail]=createSignal("");
     const[telefono,setTelefono]=createSignal("");
-    const[data_Nascita,setData_Nascita]=createSignal(""); //Non riuscita a modificare a causa del formato
+    const[data_Nascita,setData_Nascita]=createSignal(""); 
 
+  //Funzione per modificare i dati di un ristoratore
    createEffect(()=>{ const fetchData = async () => {
     try {
+      //Chiamata all'API
       const response = await axios.get("http://localhost:8080/dashboard/ristoratoreDetails", {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -26,6 +28,7 @@ function ModificaAuth(){
       setData_Nascita(response.data.data_Nascita);
 
     } catch (error) {
+      //Gestione dell'errore
       console.error("Errore durante la richiesta GET", error);
     }
   };
@@ -39,7 +42,7 @@ function ModificaAuth(){
             cognome:cognome(),
             email: email(),
             telefono: telefono(),
-            data_Nascita: data_Nascita(), //Data nascita non modificata per problemi di formato
+            data_Nascita: data_Nascita(),
           },
           { headers: {
             Authorization: `Bearer ${token}`,

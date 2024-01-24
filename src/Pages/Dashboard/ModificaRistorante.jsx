@@ -11,8 +11,10 @@ const [telefono,setTelefono]=createSignal("");
 const IdRistorante=sessionStorage.getItem('IdRistorante');
 const token=sessionStorage.getItem('tokenAuth');
 
+//Funzione per la modifica dei dati di un ristorante
 createEffect(()=>{ const fetchData = async () => {
     try {
+      //Chiamata all'API
       const response = await axios.get(`http://localhost:8080/ristorante/getRistorante/${IdRistorante}`);
       setNCivico(response.data.n_Civico);
       setCap(response.data.cap);
@@ -23,6 +25,7 @@ createEffect(()=>{ const fetchData = async () => {
   
 
     } catch (error) {
+      //Gestione degli errori
       console.error("Errore durante la richiesta GET", error);
     }
   }

@@ -9,22 +9,25 @@ function VisualizzaProdottiMenu(){
     const idRistorante=sessionStorage.getItem("IdRistorante");
     const token=sessionStorage.getItem('tokenAuth');
 
-    
+        //Funzione per ottenere una lista dei prodotti di un menù tramite l'id del menù
     createEffect(()=>{ const fetchData = async () => {
         try {  
-           
+       //Chiamata all'API
           const response = await axios.get(`http://localhost:8080/ristorante/getProdottiByIDMenu/${idMenu}`);
           setProdottiList({...prodottiList(), prodotti: response.data });
         } catch (error) {
+        //Gestione degli errori
           console.error("Errore durante la richiesta GET", error);
         }
       };
         fetchData();
     });
 
+    //Funzione per poter rimuovere un prodotto all'interno del menù
     function rimuovi(idProdotto){
         const removeProduct= async()=>{
             try{
+                //Chiamata all'API
                 const response= await axios.delete(`http://localhost:8080/ristorante/removeProductMenu/${idMenu}/${idProdotto}/${idRistorante}`,
                 {  headers: {
                     Authorization: `Bearer ${token}`,
@@ -35,6 +38,7 @@ function VisualizzaProdottiMenu(){
                 window.location.reload();
 
             }catch(error){
+                //Gestione degli errori
                 console.error("Errore nella richiesta DELETE",error);
             }
         }

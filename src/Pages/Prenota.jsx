@@ -62,8 +62,8 @@ export default function PrenotaRistorante(){
 
     
   //Funzione di prenotazione
-  async function prenota() {
-    preventDefault()
+  async function prenota(event) {
+    event.preventDefault()
     try {
       //Chiamata all'API di prenotazione
       const response = await axios.post("http://localhost:8080/prenotazioni/insertPrenotazione", {
@@ -105,7 +105,7 @@ export default function PrenotaRistorante(){
    
   return(
     <main class={styles.cd__main}>
-      <form class={styles.form} action="#" method="post">
+      <form class={styles.form}>
         <div class={styles.elemGroup}>
           <label>E-mail</label>
           <input type="email" onChange={(e)=>setEmail(e.target.value)} value={email()} placeholder="VincenzoEsposito@gmail.com" required=""/>
@@ -132,7 +132,7 @@ export default function PrenotaRistorante(){
           <input type="number" onChange={(e)=>setChatID(e.target.value)} value={chatID()} required=""/>
         </div>
         <hr/>
-        <button class={styles.buttonForm} onClick={()=>prenota()}type="submit">Prenota</button>
+        <button class={styles.buttonForm} onClick={prenota}type="submit">Prenota</button>
       </form>
     </main>
   )

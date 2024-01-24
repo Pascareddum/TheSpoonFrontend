@@ -8,10 +8,12 @@ function InserisciMenu(){
     const idRestaurant=sessionStorage.getItem("IdRistorante");
     const tokenAuth=sessionStorage.getItem('tokenAuth');
 
+    //Funzione per inserire un menù all'interno di un ristorante
     async function insert(event) {
         event.preventDefault();
       
             try {
+              //Chiamata all'API
           const response = await axios.post("http://localhost:8080/ristorante/insertMenu", {
            
                 nome: nome(),
@@ -26,6 +28,7 @@ function InserisciMenu(){
           alert("Menù inserito!");
           window.location.href=('/visualizzaMenu');
         } catch (error) {
+          //Gestione degli errori
             if (error.response) {
               console.error("Errore:\n", error.response.data);
               alert("Errore:\n" + error.response.data.message);

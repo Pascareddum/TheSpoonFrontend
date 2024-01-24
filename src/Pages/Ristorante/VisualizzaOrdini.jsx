@@ -10,22 +10,25 @@ function VisualizzaOrdini(){
     const [dettagliOrdine, setDettagliOrdine] = createSignal(null);
     const [showPopup, setShowPopup] = createSignal(false);
 
-    
+    //Funzione per ottenere una lista di ordini tramite l'id del ristorante
     createEffect(()=>{ const fetchData = async () => {
         try {  
-           
+          //Chiamata all'API
           const response = await axios.get(`http://localhost:8080/ordini/ordiniByRistorante/${idRistorante}`,{headers: {
             Authorization: `Bearer ${token}`,}});
           setOrdiniList({...ordiniList(), ordini: response.data });
         } catch (error) {
+          //Gestione degli errori
           console.error("Errore durante la richiesta GET", error);
         }
       };
         fetchData();
     });
 
+    //Funzione per confermare un ordine 
     async function conferma(idOrdine){
         try {
+          //Chiamata all'API
           const response = await axios.post(`http://localhost:8080/ordini/confermaOrdine/${idOrdine}`,
           null,
           { headers: {
@@ -35,6 +38,7 @@ function VisualizzaOrdini(){
           alert("Ordine confermato!")
           window.location.reload();
         } catch (error) {
+          //Gestione degli errori
           if (error.response) {
             console.error("Errore:\t", error.response.data);
             alert("Errore:\n" + error.response.data.message);

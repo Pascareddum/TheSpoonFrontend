@@ -7,12 +7,14 @@ function VisualizzaProdotti(){
         otherInfo: [],
     });
     const idRistorante=sessionStorage.getItem("IdRistorante");
+    //Funzione per ottenre una lista di prodotti all'interno del proprio ristorante
     createEffect(()=>{ const fetchData = async () => {
         try {  
-           
+           //Chiamata all'API
           const response = await axios.get(`http://localhost:8080/prodotto/getAllProdottiByIdRistorante/${idRistorante}`);
           setProdottiList({...prodottiList(), prodotti: response.data });
         } catch (error) {
+        //Gestione degli errori
           console.error("Errore durante la richiesta GET", error);
         }
       };

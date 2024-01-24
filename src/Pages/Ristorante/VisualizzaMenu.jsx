@@ -6,16 +6,21 @@ function VisualizzaMenu(){
         menus: [],
     });
     const idRistorante=sessionStorage.getItem("IdRistorante");
+
+    //Funzione per ottenere una lista di menù tramite l'id del ristorante
     createEffect(()=>{ const fetchData = async () => {
         try {  
+            //Chiamata all'API
           const response = await axios.get(`http://localhost:8080/ristorante/getMenuByIDRistorante/${idRistorante}`);
           setMenusList({...menusList(), menus: response.data });
         } catch (error) {
+            //Gestione degli errori
           console.error("Errore durante la richiesta GET", error);
         }
       };
         fetchData();
     });
+    
     function visualizzaProdotti(){
         window.location.href=('/visualizzaProdotti');
     }
